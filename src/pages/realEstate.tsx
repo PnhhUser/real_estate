@@ -1,7 +1,8 @@
-import { MdOutlineArrowDropDown } from "react-icons/md";
+// import { MdOutlineArrowDropDown } from "react-icons/md";
 
 function RealEstate() {
-  const handleSelectStatus = () => {};
+  // const handleSelectStatus = () => {};
+
   return (
     <div>
       <div className="w-full">
