@@ -93,11 +93,11 @@
 }
 
 
-.ipt-contact::placeholder {
+.ipt::placeholder {
     transition: .4s linear;
 }
 
-.ipt-contact:focus::placeholder {
+.ipt:focus::placeholder {
     color: transparent;
     transition: .4s linear;
 }

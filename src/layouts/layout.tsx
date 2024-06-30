@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -19,6 +19,7 @@ import {
   PATH_INDEX,
   PATH_LOGIN,
   PATH_REAL_ESTATE,
+  PATH_REGISTER,
 } from "../constants/path";
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -27,12 +28,25 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 function Layout() {
   const [isMenuFixed, setIsMenuFixed] = useState<boolean>(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const [visible, setVisible] = useState<boolean>(true);
+
+  const pathNameShortCut = location.pathname.split("/").join("");
 
   useEffect(() => {
     window.addEventListener("scroll", () =>
       window.scrollY > H_24 ? setIsMenuFixed(true) : setIsMenuFixed(false)
     );
-  }, []);
+
+    if (
+      pathNameShortCut === PATH_LOGIN.split("/").join("") ||
+      pathNameShortCut === PATH_REGISTER.split("/").join("")
+    ) {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
+  }, [visible, pathNameShortCut]);
 
   return (
     <div>
@@ -71,13 +85,15 @@ function Layout() {
             </nav>
           </div>
           <div className="hidden md:block">
-            <Link
-              to={PATH_LOGIN}
-              className="uppercase flex items-center flex-wrap py-4 px-6 main-gradient rounded text-white"
-            >
-              <span>Login</span>
-              <FaLongArrowAltRight className="ml-3" />
-            </Link>
+            {visible ? (
+              <Link
+                to={PATH_LOGIN}
+                className="uppercase flex items-center flex-wrap py-4 px-6 main-gradient rounded text-white"
+              >
+                <span>Login</span>
+                <FaLongArrowAltRight className="ml-3" />
+              </Link>
+            ) : null}
           </div>
           <div className="md:hidden pe-4">
             <AiOutlineMenu className="text-3xl" />

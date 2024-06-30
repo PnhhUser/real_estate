@@ -20,6 +20,8 @@ import House_6 from "../assets/imgs/property-12.png";
 import House_7 from "../assets/imgs/blog-two-1.png";
 import House_8 from "../assets/imgs/blog-two-2.png";
 import House_9 from "../assets/imgs/blog-two-3.png";
+import House_10 from "../assets/imgs/property-13.png";
+import House_11 from "../assets/imgs/property-14.png";
 
 
 
@@ -47,3 +49,5 @@ export const HOUSE_6 = House_6;
 export const HOUSE_7 = House_7;
 export const HOUSE_8 = House_8;
 export const HOUSE_9 = House_9;
+export const HOUSE_10 = House_10;
+export const HOUSE_11 = House_11;

@@ -23,6 +23,7 @@ import {
 import { PATH_BLOG, PATH_INDEX, PATH_REAL_ESTATE } from "../constants/path";
 import { Link, NavLink } from "react-router-dom";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { InputField } from "../components/input";
 
 function Index() {
   return (
@@ -479,11 +480,10 @@ function Index() {
                       >
                         Your Name
                       </label>
-                      <input
-                        id="name"
-                        name="name"
+                      <InputField
                         type="text"
-                        className="border-[1px] w-full h-14 outline-none rounded indent-4 ipt-contact"
+                        id="name"
+                        className="w-full h-14"
                         placeholder="Your Name"
                       />
                     </div>
@@ -494,12 +494,11 @@ function Index() {
                       >
                         Your Phone
                       </label>
-                      <input
-                        id="phone"
-                        name="phone"
+                      <InputField
                         type="text"
-                        className="border-[1px] w-full h-14 outline-none rounded indent-4 ipt-contact"
-                        placeholder="Your Phone"
+                        id="phone"
+                        className="w-full h-14"
+                        placeholder="Your phone"
                       />
                     </div>
                   </div>
@@ -510,12 +509,11 @@ function Index() {
                     >
                       Your Email
                     </label>
-                    <input
+                    <InputField
                       type="email"
-                      name="email"
                       id="email"
-                      className="border-[1px] w-full h-14 outline-none rounded indent-4 ipt-contact"
-                      placeholder="Your Email"
+                      className="w-full h-14"
+                      placeholder="Your email"
                     />
                   </div>
                   <div className="mb-4">
@@ -528,7 +526,7 @@ function Index() {
                     <textarea
                       name="message"
                       id="message"
-                      className="border-[1px] w-full h-28 outline-none rounded indent-4 py-3 ipt-contact"
+                      className="border-[1px] w-full h-28 outline-none rounded indent-4 py-3 ipt"
                       placeholder="Write Message"
                     ></textarea>
                   </div>
