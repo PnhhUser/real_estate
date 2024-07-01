@@ -24,12 +24,14 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 function Layout() {
   const [isMenuFixed, setIsMenuFixed] = useState<boolean>(false);
   const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const [visible, setVisible] = useState<boolean>(true);
+  const [isClose, setIsClose] = useState<boolean>(true);
 
   const pathNameShortCut = location.pathname.split("/").join("");
 
@@ -49,7 +51,14 @@ function Layout() {
   }, [visible, pathNameShortCut]);
 
   return (
-    <div>
+    <div className={!isClose ? `overflow-hidden h-screen` : ""}>
+      <div
+        className={`w-full h-screen bg-black opacity-40 absolute top-0 left-0 z-10 ${
+          !isClose ? "block" : "hidden"
+        }`}
+        onClick={() => setIsClose(true)}
+      ></div>
+
       <div
         ref={navRef}
         className={`w-full bg-main z-50 duration-1000 md:px-5 ${
@@ -96,7 +105,10 @@ function Layout() {
             ) : null}
           </div>
           <div className="md:hidden pe-4">
-            <AiOutlineMenu className="text-3xl" />
+            <AiOutlineMenu
+              className="text-3xl"
+              onClick={() => setIsClose(false)}
+            />
           </div>
         </div>
       </div>
@@ -204,6 +216,73 @@ function Layout() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div
+        className={`w-1/2 h-screen bg-white absolute top-0 left-0 z-20 transition-transform duration-500 ${
+          !isClose ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="h-10 flex justify-end items-center">
+          <IoCloseCircleOutline
+            className="me-2 text-2xl text-clr-main"
+            onClick={() => setIsClose(true)}
+          />
+        </div>
+        <ul className="h-1/2 flex flex-col justify-center ps-4 gap-3">
+          <li className="mb-2">
+            <NavLink
+              to={PATH_INDEX}
+              className={({ isActive }) => {
+                return isActive
+                  ? "text-3xl text-clr-main ps-2 font-medium inline-block"
+                  : "text-xl font-medium";
+              }}
+              onClick={() => setIsClose(true)}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="mb-2">
+            <NavLink
+              to={PATH_REAL_ESTATE}
+              className={({ isActive }) => {
+                return isActive
+                  ? "text-3xl text-clr-main ps-2 font-medium inline-block"
+                  : "text-xl font-medium";
+              }}
+              onClick={() => setIsClose(true)}
+            >
+              Real Estate
+            </NavLink>
+          </li>
+          <li className="mb-2">
+            <NavLink
+              to={PATH_BLOG}
+              className={({ isActive }) => {
+                return isActive
+                  ? "text-3xl text-clr-main ps-2 font-medium inline-block"
+                  : "text-xl font-medium";
+              }}
+              onClick={() => setIsClose(true)}
+            >
+              Blog
+            </NavLink>
+          </li>
+          <li className="mb-2">
+            <NavLink
+              to={PATH_LOGIN}
+              className={({ isActive }) => {
+                return isActive
+                  ? "text-3xl text-clr-main ps-2 font-medium inline-block"
+                  : "text-xl font-medium";
+              }}
+              onClick={() => setIsClose(true)}
+            >
+              Login
+            </NavLink>
+          </li>
+        </ul>
       </div>
     </div>
   );

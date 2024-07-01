@@ -27,6 +27,7 @@ function Router() {
         <Route path={PATH_REGISTER} element={<Register />} />
         <Route path={PATH_REAL_ESTATE} element={<RealEstate />} />
         <Route path={PATH_BLOG} element={<Blog />} />
+        <Route path="*" element={<p>Not found</p>} />
       </Route>
     )
   );
