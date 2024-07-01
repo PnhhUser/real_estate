@@ -101,3 +101,29 @@
     color: transparent;
     transition: .4s linear;
 }
+
+input[type="checkbox"] {
+    appearance: none;
+    border: 1px solid gray;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    padding: 1px;
+}
+
+input[type="checkbox"]:checked {
+    border-color: #F37221;
+    background-color: #F37221;
+    position: relative;
+}
+
+input[type="checkbox"]:checked:before {
+    content: "\2713";
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
