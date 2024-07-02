@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { PATH_REAL_ESTATE } from "../constants/path";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useState } from "react";
+import { CiFilter } from "react-icons/ci";
 
 type viewMode = "box" | "listBox";
 
@@ -16,12 +17,13 @@ enum VIEWMODE {
 
 function RealEstate() {
   const [viewMode, setViewMode] = useState<viewMode>("box");
+  const [isFilter, setIsFilter] = useState<boolean>(false);
 
   return (
     <div>
-      <div className="w-full">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-12 py-10 my-10">
+      <div className="w-full bg-main">
+        <div className="xl:container xl:mx-auto mx-4">
+          <div className="grid grid-cols-12 pt-16 py-32">
             {/* select */}
             <div className="col-span-6 mb-4">
               <div className="flex gap-3 items-center">
@@ -51,10 +53,27 @@ function RealEstate() {
                     }
                   />
                 </div>
+                <div
+                  className={`border-[1px] p-2 rounded border-clr-main cursor-pointer md:hidden ${
+                    isFilter ? "bg-clr-main" : ""
+                  }`}
+                  onClick={() => setIsFilter(!isFilter)}
+                >
+                  <CiFilter
+                    className={isFilter ? "text-white" : "text-clr-main"}
+                  />
+                </div>
               </div>
             </div>
             {/* option checkbox  */}
-            <div className="col-start-1 col-end-5">
+            <div
+              className={`col-start-1 col-end-5 fixed md:relative top-1/2 left-0 -translate-y-1/2 w-1/2 md:w-full z-30 opacity-95 transition-transform duration-700
+                ${
+                  isFilter
+                    ? "translate-x-0"
+                    : "-translate-x-full md:translate-x-0"
+                }`}
+            >
               <div className="py-2">
                 <div className="border-[1px] border-gray-200 rounded max-w-[350px] py-2 bg-white shadow ps-3">
                   <p className="font-semibold text-lg mb-4">Status</p>
@@ -191,19 +210,37 @@ function RealEstate() {
               </div>
             </div>
             {/* real estate */}
-            <div className="col-start-5 col-end-13">
+            <div className="md:col-start-5 md:col-end-13 col-span-12 md:px-6 xl:px-0">
               <div className="py-2">
                 <div className="flex flex-wrap gap-6">
-                  <div className="flex-[0,0,auto] md:w-[100%] w-full relative mb-36">
-                    <div className="overflow-hidden w-[50%] rounded-s-md">
+                  <div
+                    className={`flex-[0,0,auto] ${
+                      viewMode === VIEWMODE.BOX
+                        ? "lg:w-[48%] md:w-[47%] mb-36 md:mb-56 lg:mb-36"
+                        : "md:w-[100%] h-[250px]"
+                    }  w-full relative`}
+                  >
+                    <div
+                      className={`${
+                        viewMode === VIEWMODE.BOX
+                          ? "overflow-hidden rounded"
+                          : "overflow-hidden w-[30%] h-full rounded"
+                      }`}
+                    >
                       <img
                         src={HOUSE_1}
                         alt={IMG_ALT}
-                        className="hover:scale-[1.1] transition-transform duration-700 w-full"
+                        className="hover:scale-[1.1] transition-transform duration-700 w-full h-full object-cover"
                       />
                     </div>
-                    <div className="w-[50%] h-full p-6 bg-white absolute top-0 right-0 rounded-e-md">
-                      <h4 className="font-semibold max-w-[250px] text-[1.2rem] mb-2">
+                    <div
+                      className={`${
+                        viewMode === VIEWMODE.BOX
+                          ? "w-[90%] p-6 bg-white absolute -bottom-28 md:-bottom-56 lg:-bottom-36 right-0 shadow rounded-s-md rounded-br-md"
+                          : "w-[70%] h-full ps-6 bg-white absolute top-0 right-0 rounded-e-md"
+                      }`}
+                    >
+                      <h4 className="font-semibold md:max-w-[250px] text-[1.2rem] mb-2">
                         Turning Dreams into Addresses Home State
                       </h4>
                       <p className="mb-2 font-medium text-xl">$456.00</p>
@@ -215,7 +252,7 @@ function RealEstate() {
                       </p>
                       <Link
                         to={PATH_REAL_ESTATE}
-                        className="text-clr-main inline-block mt-5 next"
+                        className="text-clr-main inline-block md:mt-5 mt-3 next"
                       >
                         <span className="uppercase font-medium">Detail</span>
                         <FaLongArrowAltRight className="inline-block ms-3 icon-arrow duration-300" />
@@ -223,16 +260,34 @@ function RealEstate() {
                     </div>
                   </div>
 
-                  <div className="flex-[0,0,auto] md:w-[48%] w-full relative mb-36">
-                    <div className="overflow-hidden rounded">
+                  <div
+                    className={`flex-[0,0,auto] ${
+                      viewMode === VIEWMODE.BOX
+                        ? "lg:w-[48%] md:w-[47%] mb-36 md:mb-56 lg:mb-36"
+                        : "md:w-[100%] h-[250px]"
+                    }  w-full relative`}
+                  >
+                    <div
+                      className={`${
+                        viewMode === VIEWMODE.BOX
+                          ? "overflow-hidden rounded"
+                          : "overflow-hidden w-[30%] h-full rounded"
+                      }`}
+                    >
                       <img
                         src={HOUSE_2}
                         alt={IMG_ALT}
-                        className="hover:scale-[1.1] transition-transform duration-700"
+                        className="hover:scale-[1.1] transition-transform duration-700 w-full h-full object-cover"
                       />
                     </div>
-                    <div className="w-[90%] p-6 bg-white absolute -bottom-36 right-0 shadow rounded-s-md rounded-br-md">
-                      <h4 className="font-semibold max-w-[250px] text-[1.2rem] mb-2">
+                    <div
+                      className={`${
+                        viewMode === VIEWMODE.BOX
+                          ? "w-[90%] p-6 bg-white absolute -bottom-28 md:-bottom-56 lg:-bottom-36 right-0 shadow rounded-s-md rounded-br-md"
+                          : "w-[70%] h-full ps-6 bg-white absolute top-0 right-0 rounded-e-md"
+                      }`}
+                    >
+                      <h4 className="font-semibold md:max-w-[250px] text-[1.2rem] mb-2">
                         Turning Dreams into Addresses Home State
                       </h4>
                       <p className="mb-2 font-medium text-xl">$456.00</p>
@@ -244,7 +299,7 @@ function RealEstate() {
                       </p>
                       <Link
                         to={PATH_REAL_ESTATE}
-                        className="text-clr-main inline-block mt-5 next"
+                        className="text-clr-main inline-block md:mt-5 mt-3 next"
                       >
                         <span className="uppercase font-medium">Detail</span>
                         <FaLongArrowAltRight className="inline-block ms-3 icon-arrow duration-300" />
@@ -252,16 +307,34 @@ function RealEstate() {
                     </div>
                   </div>
 
-                  <div className="flex-[0,0,auto] md:w-[48%] w-full relative mb-36">
-                    <div className="overflow-hidden rounded">
+                  <div
+                    className={`flex-[0,0,auto] ${
+                      viewMode === VIEWMODE.BOX
+                        ? "lg:w-[48%] md:w-[47%] mb-36 md:mb-56 lg:mb-36"
+                        : "md:w-[100%] h-[250px]"
+                    }  w-full relative`}
+                  >
+                    <div
+                      className={`${
+                        viewMode === VIEWMODE.BOX
+                          ? "overflow-hidden rounded"
+                          : "overflow-hidden w-[30%] h-full rounded"
+                      }`}
+                    >
                       <img
                         src={HOUSE_3}
                         alt={IMG_ALT}
-                        className="hover:scale-[1.1] transition-transform duration-700"
+                        className="hover:scale-[1.1] transition-transform duration-700 w-full h-full object-cover"
                       />
                     </div>
-                    <div className="w-[90%] p-6 bg-white absolute -bottom-36 right-0 shadow rounded-s-md rounded-br-md">
-                      <h4 className="font-semibold max-w-[250px] text-[1.2rem] mb-2">
+                    <div
+                      className={`${
+                        viewMode === VIEWMODE.BOX
+                          ? "w-[90%] p-6 bg-white absolute -bottom-28 md:-bottom-56 lg:-bottom-36 right-0 shadow rounded-s-md rounded-br-md"
+                          : "w-[70%] h-full ps-6 bg-white absolute top-0 right-0 rounded-e-md"
+                      }`}
+                    >
+                      <h4 className="font-semibold md:max-w-[250px] text-[1.2rem] mb-2">
                         Turning Dreams into Addresses Home State
                       </h4>
                       <p className="mb-2 font-medium text-xl">$456.00</p>
@@ -273,7 +346,7 @@ function RealEstate() {
                       </p>
                       <Link
                         to={PATH_REAL_ESTATE}
-                        className="text-clr-main inline-block mt-5 next"
+                        className="text-clr-main inline-block md:mt-5 mt-3 next"
                       >
                         <span className="uppercase font-medium">Detail</span>
                         <FaLongArrowAltRight className="inline-block ms-3 icon-arrow duration-300" />
