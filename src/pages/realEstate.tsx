@@ -237,7 +237,7 @@ function RealEstate() {
                       className={`${
                         viewMode === VIEWMODE.BOX
                           ? "w-[90%] p-6 bg-white absolute -bottom-28 md:-bottom-56 lg:-bottom-36 right-0 shadow rounded-s-md rounded-br-md"
-                          : "w-[70%] h-full ps-6 bg-white absolute top-0 right-0 rounded-e-md"
+                          : "w-[70%] h-full ps-6 absolute top-0 right-0 rounded-e-md"
                       }`}
                     >
                       <h4 className="font-semibold md:max-w-[250px] text-[1.2rem] mb-2">
@@ -284,7 +284,7 @@ function RealEstate() {
                       className={`${
                         viewMode === VIEWMODE.BOX
                           ? "w-[90%] p-6 bg-white absolute -bottom-28 md:-bottom-56 lg:-bottom-36 right-0 shadow rounded-s-md rounded-br-md"
-                          : "w-[70%] h-full ps-6 bg-white absolute top-0 right-0 rounded-e-md"
+                          : "w-[70%] h-full ps-6 absolute top-0 right-0 rounded-e-md"
                       }`}
                     >
                       <h4 className="font-semibold md:max-w-[250px] text-[1.2rem] mb-2">
@@ -331,7 +331,7 @@ function RealEstate() {
                       className={`${
                         viewMode === VIEWMODE.BOX
                           ? "w-[90%] p-6 bg-white absolute -bottom-28 md:-bottom-56 lg:-bottom-36 right-0 shadow rounded-s-md rounded-br-md"
-                          : "w-[70%] h-full ps-6 bg-white absolute top-0 right-0 rounded-e-md"
+                          : "w-[70%] h-full ps-6 absolute top-0 right-0 rounded-e-md"
                       }`}
                     >
                       <h4 className="font-semibold md:max-w-[250px] text-[1.2rem] mb-2">

@@ -22,6 +22,8 @@ import House_8 from "../assets/imgs/blog-two-2.png";
 import House_9 from "../assets/imgs/blog-two-3.png";
 import House_10 from "../assets/imgs/property-13.png";
 import House_11 from "../assets/imgs/property-14.png";
+import bolg_1 from "../assets/imgs/blog-classic1.png"
+import bolg_2 from "../assets/imgs/blog-classic2.png"
 
 
 
@@ -51,3 +53,6 @@ export const HOUSE_8 = House_8;
 export const HOUSE_9 = House_9;
 export const HOUSE_10 = House_10;
 export const HOUSE_11 = House_11;
+
+export const BOLG_1 = bolg_1;
+export const BOLG_2 = bolg_2;
